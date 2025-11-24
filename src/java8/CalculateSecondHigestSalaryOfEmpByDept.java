@@ -30,6 +30,21 @@ public class CalculateSecondHigestSalaryOfEmpByDept {
                         )
                 ));
 
-        System.out.println(secondHighestByDept);
+        employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        list -> list
+                                .stream()
+                                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                                .distinct()
+                                .skip(1)
+                                .findFirst()
+                                .orElse(null)
+                ))).forEach((key, value)->{
+                    System.out.println(key + " -> "+value);
+                });
+
+
+//        System.out.println(secondHighestByDept);
     }
 }

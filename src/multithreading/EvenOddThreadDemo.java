@@ -1,34 +1,36 @@
 package multithreading;
 
 public class EvenOddThreadDemo {
-    private boolean isOddTrue = false;
+    private boolean isOddTurn = true; // Start with odd
+    private String str = "abc";
 
     public synchronized void printOdd(int num) {
-
-        try {
-            if(!isOddTrue) {
+        while (!isOddTurn) { // Wait until it's odd thread's turn
+            try {
                 wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }catch (InterruptedException e){
-            e.printStackTrace();
         }
+        str += num;
+        System.out.println("Odd Thread: " + num + " -> " + str);
 
-        System.out.println("Odd Thread: " + num);
-        isOddTrue = true;
+        isOddTurn = false; // Now even thread should run
         notify();
     }
 
     public synchronized void printEven(int num) {
-        try {
-            if(isOddTrue) { //use while
+        while (isOddTurn) { // Wait until it's even thread's turn
+            try {
                 wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }catch (InterruptedException e){
-            e.printStackTrace();
         }
+        str += num;
+        System.out.println("Even Thread: " + num + " -> " + str);
 
-        System.out.println("Even Thread: " + num);
-        isOddTrue = true;
+        isOddTurn = true; // Now odd thread should run
         notify();
     }
 

@@ -30,18 +30,5 @@ public class GroupByFirstChar {
            System.out.println(key + " -> " + value);
        });
 
-
-        Map<String, Employee> collect = employees
-                .stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(
-                        Collectors.toList(),
-                        list ->
-                                list.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
-                                        .skip(1)
-                                        .findFirst()
-                                        .orElse(null)
-                )));
-
-        System.out.println("test - " + collect);
     }
 }

@@ -1,5 +1,8 @@
 package number;
 
+import java.util.Arrays;
+import java.util.OptionalDouble;
+
 public class MissingNumber {
 
     public static void main(String[] args) {
@@ -9,10 +12,12 @@ public class MissingNumber {
         int expected = n * (n+1) /2;
 
 
-        for (int i: nums){
-            expected-= i;
-        }
+//        for (int i: nums){
+//            expected-= i;
+//        }
 
-        System.out.println(expected);
+        int sum = Arrays.stream(nums).sum();
+        System.out.println(expected - sum);
+
     }
 }
