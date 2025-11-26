@@ -12,8 +12,7 @@ public class EvenOddThreadDemo {
                 e.printStackTrace();
             }
         }
-        str += num;
-        System.out.println("Odd Thread: " + num + " -> " + str);
+        System.out.println("Odd Thread: " + str+num);
 
         isOddTurn = false; // Now even thread should run
         notify();
@@ -27,8 +26,7 @@ public class EvenOddThreadDemo {
                 e.printStackTrace();
             }
         }
-        str += num;
-        System.out.println("Even Thread: " + num + " -> " + str);
+        System.out.println("Even Thread: " +str+num);
 
         isOddTurn = true; // Now odd thread should run
         notify();
@@ -51,5 +49,6 @@ public class EvenOddThreadDemo {
 
         oddThread.start();
         evenThread.start();
+        System.out.println(10+20+"10"+20);
     }
 }
