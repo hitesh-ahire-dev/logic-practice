@@ -1,19 +1,26 @@
 package test;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test5 {
 
     public static void main(String[] args) {
 
-        List<Integer> list = Arrays.asList(1, 2, 3);
+        List<String> list = Arrays.asList("abc", "jb", "mbcd");
 
-        double v = list.stream()
-                .mapToInt(n -> n)
-                .average()
-                .orElse(0);
 
-        System.out.println(v);
+        Map<Character, List<String>> collect = list.stream()
+                .collect(Collectors.groupingBy(data -> data.charAt(0)));
+
+        System.out.println(collect);
+
+        String s = list.stream()
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
+
+        System.out.println(s);
     }
 }

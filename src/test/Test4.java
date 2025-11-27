@@ -2,6 +2,7 @@ package test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Test4 {
     public static void main(String[] args) {
@@ -23,5 +24,17 @@ public class Test4 {
 
         System.out.println(collect);
 
+
+
+
+        String str = "hitesh ahire";
+
+        String vow = "aeiouAEIOU";
+
+        long count = str.chars()
+                .filter(data -> vow.indexOf(data) != -1)
+                .count();
+
+        System.out.println(count);
     }
 }

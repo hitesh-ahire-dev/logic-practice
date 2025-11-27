@@ -29,7 +29,7 @@ public class FindOutFirstDublicateCharator {
                 ));
         Optional<Map.Entry<String, Long>> firstDuplicate = collect;
 
-        System.out.println(collect);
+        System.out.println(stringLongEntry);
     }
 
 }
